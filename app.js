@@ -18,7 +18,19 @@ const reset = () => {
     result2.innerHTML = score2;
     result1.style.color = 'azure';
     result2.style.color = 'azure';
+    btnPlayerOne.disabled = false;
+    btnPlayerTwo.disabled = false;
+    btnPlayerOne.style.cursor = 'pointer';
+    btnPlayerTwo.style.cursor = 'pointer';
 };
+
+// Function for disabling buttons 
+const disableButtons = () => {
+    btnPlayerOne.disabled = true;
+    btnPlayerTwo.disabled = true;
+    btnPlayerOne.style.cursor = 'not-allowed';
+    btnPlayerTwo.style.cursor = 'not-allowed';
+}
 
 // Adding event listeners for buttons
 btnPlayerOne.addEventListener('click', (e) => {
@@ -28,14 +40,20 @@ btnPlayerOne.addEventListener('click', (e) => {
     if (score1 === parseInt(playingTo.options[playingTo.selectedIndex].text)) {
         result1.style.color = 'green';
         result2.style.color = 'black';
-
+        disableButtons();
     }
 });
-
 btnPlayerTwo.addEventListener('click', (e) => {
     ++score2;
     result2.innerHTML = score2;
+
+    if (score2 === parseInt(playingTo.options[playingTo.selectedIndex].text)) {
+        result2.style.color = 'green';
+        result1.style.color = 'black';
+        disableButtons();
+    }
 });
 
-// Reset button
+// Elements that reset the game
 btnReset.addEventListener('click', reset);
+playingTo.addEventListener('change', reset);
