@@ -16,6 +16,8 @@ const reset = () => {
     score2 = 0;
     result1.innerHTML = score1;
     result2.innerHTML = score2;
+    result1.style.color = 'azure';
+    result2.style.color = 'azure';
 };
 
 // Adding event listeners for buttons
@@ -24,7 +26,9 @@ btnPlayerOne.addEventListener('click', (e) => {
     result1.innerHTML = score1;
 
     if (score1 === parseInt(playingTo.options[playingTo.selectedIndex].text)) {
-        console.log(e);
+        result1.style.color = 'green';
+        result2.style.color = 'black';
+
     }
 });
 
