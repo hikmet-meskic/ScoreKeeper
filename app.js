@@ -38,7 +38,7 @@ btnPlayerOne.addEventListener('click', (e) => {
     result1.innerHTML = score1;
 
     if (score1 === parseInt(playingTo.options[playingTo.selectedIndex].text)) {
-        result1.style.color = 'green';
+        result1.style.color = 'gold';
         result2.style.color = 'black';
         disableButtons();
     }
@@ -48,7 +48,7 @@ btnPlayerTwo.addEventListener('click', (e) => {
     result2.innerHTML = score2;
 
     if (score2 === parseInt(playingTo.options[playingTo.selectedIndex].text)) {
-        result2.style.color = 'green';
+        result2.style.color = 'gold';
         result1.style.color = 'black';
         disableButtons();
     }
