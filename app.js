@@ -7,6 +7,12 @@ const btnPlayerOne = document.querySelector('#playerOne');
 const btnPlayerTwo = document.querySelector('#playerTwo');
 const btnReset = document.querySelector('#reset');
 
+// Using prompt box to get input from users
+const player1Name = prompt('Please enter your name\nFirst player', 'Player One');
+const player2Name = prompt('Please enter your name\nSecond player', 'Player Two');
+btnPlayerOne.innerText = `+1 ${player1Name}`;
+btnPlayerTwo.innerText = `+1 ${player2Name}`;
+
 let score1 = 0;
 let score2 = 0;
 
@@ -22,7 +28,8 @@ const reset = () => {
     btnPlayerTwo.disabled = false;
     btnPlayerOne.style.cursor = 'pointer';
     btnPlayerTwo.style.cursor = 'pointer';
-};
+    document.body.removeChild(document.body.lastChild);
+}
 
 // Function for disabling buttons 
 const disableButtons = () => {
@@ -30,6 +37,15 @@ const disableButtons = () => {
     btnPlayerTwo.disabled = true;
     btnPlayerOne.style.cursor = 'not-allowed';
     btnPlayerTwo.style.cursor = 'not-allowed';
+}
+
+const addWinner = (winner) => {
+    let h1 = document.createElement('h1');
+    h1.innerHTML = `${winner} won the game!`;
+    h1.style.textAlign = 'center';
+    h1.style.color = 'gold';
+    h1.style.textDecoration = 'underline dotted';
+    document.body.append(h1);
 }
 
 // Adding event listeners for buttons
@@ -41,6 +57,7 @@ btnPlayerOne.addEventListener('click', (e) => {
         result1.style.color = 'gold';
         result2.style.color = 'black';
         disableButtons();
+        addWinner(player1Name);
     }
 });
 btnPlayerTwo.addEventListener('click', (e) => {
@@ -51,6 +68,7 @@ btnPlayerTwo.addEventListener('click', (e) => {
         result2.style.color = 'gold';
         result1.style.color = 'black';
         disableButtons();
+        addWinner(player2Name);
     }
 });
 
